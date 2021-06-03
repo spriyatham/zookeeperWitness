@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.apache.zookeeper.server.quorum.witness";
+option java_outer_classname = "WitnessHandlerProto";
+
+service WitnessService {
+  //rpc communicate(stream WitnessQuorumPacket) returns (stream WitnessQuorumPacket) {}
+  /**
+    We have 3 registers
+    1. acceptedEpoch
+    2. currentEpoch
+    3. zxid
+    But you will read and write only two registers.. acceptedEpoch and currentEpoch
+  */
+  rpc readAcceptedEpoch(ReadAcceptedEpochRequest) returns (ReadAcceptedEpochResponse);
+  rpc writeAcceptedEpoch(WriteAcceptedEpochRequest) returns (WriteAcceptedEpochResponse);
+
+  /*This is the synch phase. Leader send its maxCommittedLogZxid. Witness updates its zxid and its currentEpoch. and returns
+  the current epoch.*/
+  rpc newLeader(NewLeaderRequest) returns (NewLeaderResponse);
+  rpc writeZxid(Proposal) returns (Ack);
+  rpc ping(PingRequest) returns (PingResponse);
+}
+
+/**
+The leaderSid will act as a Rank. Only perform the read, if the currentVote.leaderId == leaderSid
+*/
+message ReadAcceptedEpochRequest {
+  int64 leaderSid = 1;
+}
+
+message ReadAcceptedEpochResponse {
+  //should return the SID of node it thinks of as the leader- In normal case leaderSid will be equal to currentVote.leaderID.
+  /* Generally, a follower initiates the connection to the potential leader and performs discovery --> sync etc..
+  In that case, the node it thinks of as the p.l is not the potential leader, the connection will time out I guess..-- see what exactly,
+  the follower does in that situation..
+  The P.L need not handle that situation..
+  But, incase of witness, the ReadAcceptedEpoch rpc is invoked by the potential leader...so..
+      -- witness - should do some handing..and let the p.l which invoked the rpc know that the
+                witness thinks of someone else as leader, by sending the id of whom it voted for
+      -- leader - A node goes to leading phase only when it has learned that it won the election i.e it got a quoroum of votes.
+                  Now if it learns from the witness that, witness supports a different node..
+                  It can check if it has recieved a vote from the witness during election -- if witness did vote -- then witness could be byzantine and lying..
+                  If something did actually happen and a differnt leader was elected by the time it could initiate discovery..then a majority of servers
+                  woul anyways not try to enter into discovery phase with it..(//TODO: Look if there is a timeout on discovery phase )
+                  But, if the leader gets a majority without help of witness in discovery phase, then witness could be byzantine..
+  */
+  int64 leaderSid = 1;
+  int64 witnessSid = 2;
+  int64 acceptedEpoch = 3;
+}
+
+message WriteAcceptedEpochRequest{
+  int64 leaderSid = 1;
+  int64 newEpoch = 2;
+}
+
+/*.
+    The witness will accept the newEpoch sent by the leader
+    by using the same logic used by a normal follower
+    and responds with an ACKEPOCH<-1 or currentEpoch, zxid>.
+*/
+message WriteAcceptedEpochResponse{
+  int64 leaderSid = 1;
+  // currentEpoch = -1 if the newEpoch sent by the leader was not accepted by the witness
+  int64 currentEpoch = 2;
+  int64 zxid = 3;
+}
+
+message NewLeaderRequest{
+  int64 leaderMaxCommittedLog = 1;
+}
+
+message NewLeaderResponse{
+  int64 currentEpoch = 1;
+}
+
+message Proposal {
+  int64 zxid = 1;
+}
+
+message Ack {
+  // -1 for failure? //TODO: Does a follwer ever reject a proposal from leader? - NO
+  //int64 zxid = 1;
+}
+
+message PingRequest{
+
+}
+
+message PingResponse{
+
+}

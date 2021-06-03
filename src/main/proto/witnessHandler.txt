@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.apache.zookeeper.server.quorum.witnesshandler";
+option java_outer_classname = "WitnessHandlerProto";
+
+service WitnessHandler {
+  rpc communicate(stream WitnessQuorumPacket) returns (stream WitnessQuorumPacket) {}
+}
+message WitnessQuorumPacket {
+   enum Type {
+     WITNESSINFO = 0;
+     LEADERINFO = 1;
+     NEWLEADER = 2;
+     ACKEPOCH = 3;
+     PROPOSAL = 4;
+     ACK = 5;
+     PING = 6;
+   }
+   Type type = 1;
+   uint64 zxid = 2;
+   bytes data = 3;
+}

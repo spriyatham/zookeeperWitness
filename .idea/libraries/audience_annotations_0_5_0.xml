@@ -1,0 +1,35 @@
+<component name="libraryTable">
+  <library name="audience-annotations-0.5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/audience-annotations-0.5.0.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/commons-cli-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jackson-annotations-2.9.10.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jackson-core-2.9.10.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jackson-databind-2.9.10.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/javax.servlet-api-3.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jetty-http-9.4.17.v20190418.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jetty-io-9.4.17.v20190418.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jetty-security-9.4.17.v20190418.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jetty-server-9.4.17.v20190418.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jetty-servlet-9.4.17.v20190418.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jetty-util-9.4.17.v20190418.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/jline-2.11.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/json-simple-1.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/log4j-1.2.17.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-buffer-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-codec-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-common-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-handler-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-resolver-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-transport-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-transport-native-epoll-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/netty-transport-native-unix-common-4.1.42.Final.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/slf4j-log4j12-1.7.25.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/zookeeper-3.5.6.jar!/" />
+      <root url="jar://$USER_HOME$/zookeeperRunSpace/apachezookeeper/lib/zookeeper-jute-3.5.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
